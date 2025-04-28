@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Umfrage zur Selbsthilfe</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	
+	<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="/css/style.css" type="text/css" />
+	
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="content-area content-low-height">
+	
+      <h1>Umfrage zur Selbsthilfe</h1>
+      <div class="content">
+         <div th:if="${param.error}" class="alert alert-danger" th:text="${param.error}">Fehler</div>
+         <div th:if="${param.message}" class="alert alert-info" th:text="${param.message}">Meldung</div>
+		 <div th:if="${globalError}" th:text="${globalError}" class="alert alert-danger"></div>
+         <form name="f" th:action="@{/surveyForm/add}" th:object="${survey}" method="POST">
+            <h2>Für welches Thema interessieren Sie sich am meisten?</h2>
+            <select class="form-select" th:field="*{type}" aria-label="Themen zur Selbsthilfe" required>
+				<option value="" selected>&lt;&lt; bitte auswählen &gt;&gt;</option>
+				<option th:each="type : ${themes}" th:text="${type.theme}" th:value="${type}"></option>
+              </select>
+            <h2>Haben Sie Fragen oder andere Themenvorschläge?</h2>
+            <div class="form-group mb-3">
+                <label class="col-form-label">Nachricht (optional)</label>
+                <textarea cols="3" rows="5" th:field="*{message}" class="form-control"></textarea>
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></p>
+            </div>
+            <h2>Möchten Sie mehr von uns erfahren?</h2>
+         	<div class="form-group">
+         		<label class="col-form-label">Kontakt z.B. E-Mail (optional)</label>
+         		<input type="email" class="form-control" th:field="*{email}" />
+         		<p class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+         	</div>
+         	<div class="form-group mt-3 mb-3 right">
+         		<input class="btn btn-primary" type="submit" value="Abstimmen" />
+         	</div>
+         </form>
+      </div>
+      <footer>
+          <div class="container text-center">
+              <span>&copy; 2025</span>
+          </div>
+      </footer>
+   </div>
+
+</body>
+</html>

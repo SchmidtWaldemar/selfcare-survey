@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Ergebnisse zur Umfrage</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	
+	<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="/css/style.css" type="text/css" />
+	
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="content-area content-low-height">
+	
+      <h1>Ergebnisse zur Umfrage</h1>
+      <div class="content">
+		<p>Vielen Dank für Ihre Teilnahme an der Umfrage.</p>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                     <th>Thema</th>
+                    <th>Ergebnis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="result : ${results}">
+                    <td th:text="${result.type.theme}"></td>
+                    <td th:text="${result.count}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div><a class="btn btn-secondary mt-3 mb-5" href="/">Zur Startseite</a></div>
+      </div>
+      <footer>
+          <div class="container text-center">
+              <span>&copy; 2025</span>
+          </div>
+      </footer>
+   </div>
+
+</body>
+</html>

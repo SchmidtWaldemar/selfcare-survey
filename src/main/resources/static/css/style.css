@@ -1,0 +1,51 @@
+/* CSS for centering and styling the text */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+	margin-bottom: 20px;
+}
+
+.content h2 {
+	margin-top: 30px;
+}
+
+.container {
+    padding: 20px;
+    border: 1px solid #000;
+}
+
+.right {
+	text-align: right;
+}
+
+.content-area {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-flow: column;
+	margin: 20px;
+}
+
+.content-low-height {	
+	height: 80vh;
+}
+
+footer a, footer input {
+	color: white;
+	text-decoration: none;
+}
+
+footer div a::after  {
+	content: "|";
+	color: white;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
