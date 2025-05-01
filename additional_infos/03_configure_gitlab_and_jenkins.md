@@ -137,4 +137,4 @@ Wenn der Job mit dem Hashtag '#1' erfolgreich durchläuft (grün), dann haben wi
 
 ## was uns in der nächsten Beschreibung erwartet ...
 
-In der nächsten Beschreibung wollen wir u.a. Jenkins und Gitlab miteinander koppeln und unsere Spring Boot Applikation dazu nutzen, um einen Build zu erstellen.
+In der nächsten Beschreibung wollen wir u.a. Jenkins und Gitlab miteinander koppeln und unsere Spring Boot Applikation dazu nutzen, um mithilfe der Pipeline einen Build zu erstellen.
