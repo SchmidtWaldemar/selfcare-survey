@@ -36,6 +36,26 @@ public class MainController {
 
 	@GetMapping("/")
 	public String index() {
+		/*
+		// bad code example
+		boolean allwaysTrue = true;
+		while (allwaysTrue) {
+			System.out.println("never ends!");
+		}
+		
+		while (allwaysTrue) {
+			System.out.println("never ends!");
+		}
+		
+		while (allwaysTrue) {
+			System.out.println("never ends!");
+		}
+		
+		while (allwaysTrue) {
+			System.out.println("never ends!");
+		}
+		*/
+
 		return "index";
 	}
 	

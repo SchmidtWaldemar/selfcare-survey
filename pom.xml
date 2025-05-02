@@ -8,11 +8,11 @@
 		<version>3.3.0</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>accessing-data-mysql-complete</artifactId>
+	<groupId>com.platform.selfcare</groupId>
+	<artifactId>selfcare-survey-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>accessing-data-mysql-complete</name>
-	<description>Demo project for Spring Boot</description>
+	<name>selfcare-survey-project</name>
+	<description>Hexagonal Selfcare Survey Project</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -56,8 +56,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>repackage</id>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<finalName>selfcare-survey</finalName>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
