@@ -1,5 +1,11 @@
 # Änderungsübersicht
 
+## Update 03-05-2025
+
+Deployment der Spring Applikation durch ArgoCD
+
+mehr dazu: [Veröffentlichung mit ArgoCD](06_launch_by_argocd.md)
+
 ## Update 02-05-2025
 Code Verification durch Sonarqube und upload nach Docker Hub
 

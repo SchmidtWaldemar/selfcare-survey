@@ -38,7 +38,7 @@ pipeline {
             }
         }
 	
-	    stage("Qualitygate") {
+        stage("Qualitygate") {
             steps {
                 script {
                     waitForQualityGate abortPipeline: true, credentialsId: 'selfcare-survey-sonarqube-token'

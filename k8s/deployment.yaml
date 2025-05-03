@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selfcare-survey
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: selfcare-survey
+  template:
+    metadata:
+      labels:
+        app: selfcare-survey
+    spec:
+      containers:
+      - image: schmidtwaldemar/selfcare-survey:latest
+        name: selfcare-survey
+        ports:
+        - containerPort: 8081
+          name: selfcare-survey
