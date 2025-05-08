@@ -1,0 +1,46 @@
+pipeline{
+    agent{
+        label "survey-agent"
+    }
+    environment {
+        APP_NAME = "selfcare-survey"
+    }
+    stages{
+        stage("clean workspace") {
+            steps {
+                cleanWs()
+            }
+        }
+    
+        stage("git pull project") {
+            steps {
+                git branch: 'master', credentialsId: 'gitlab-token', url: 'http://gitlab.local/selfcare/selfcare-survey'
+            }
+        }
+
+        stage("change version in deployment file") {
+            steps {
+                sh """
+					cat ./k8s/deployment.yaml
+					sed -i 's/${APP_NAME}:.*/${APP_NAME}:${VERSION_VALUE}/g' ./k8s/deployment.yaml
+					cat ./k8s/deployment.yaml
+				"""
+            }
+        }
+
+        stage("push changed deployment file") {
+            steps {
+                sh """
+					git config --global user.name "Max Mustermann"
+					git config --global user.email "email@muster.net"
+					git add k8s/deployment.yaml
+					git commit -m "update k8s deployment file"
+				"""
+				withCredentials([gitUsernamePassword(credentialsId: 'deployment-token', gitToolName: 'Default')]) {
+					sh "git push http://gitlab.local/selfcare/selfcare-survey master"
+				}
+            }
+        }
+        
+    }
+}

@@ -8,6 +8,11 @@ pipeline {
         jdk 'Java17'
         maven 'MavenTool'
     }
+
+    environment {
+        VERSION_VALUE = "1.0.0-${BUILD_NUMBER}"
+	    JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
+    }
     
     stages{
         stage("clean workspace") {
@@ -37,7 +42,7 @@ pipeline {
                 }
             }
         }
-	
+
         stage("Qualitygate") {
             steps {
                 script {
@@ -54,9 +59,17 @@ pipeline {
                     }
 
                     docker.withRegistry('', 'dockerhub') {
-                        docker_image.push("1.0.0-${BUILD_NUMBER}")
+                        docker_image.push("${VERSION_VALUE}")
                         docker_image.push('latest')
                     }
+                }
+            }
+        }
+
+        stage("Version Tag Trigger") {
+            steps {
+                script {
+                    sh "curl -v -k --user anton:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'VERSION_VALUE=${VERSION_VALUE}' 'http://jenkins.local:8080/job/version-refresh-pipeline/buildWithParameters?token=auth-token'"
                 }
             }
         }

@@ -1,5 +1,11 @@
 # Änderungsübersicht
 
+## Update 08-05-2025
+
+Versionierung, Persistierung und CI/CD Komplettierung
+
+mehr dazu: [CI/CD Pipeline Versionskontrolle](07_pipeline_version_control.md)
+
 ## Update 03-05-2025
 
 Deployment der Spring Applikation durch ArgoCD

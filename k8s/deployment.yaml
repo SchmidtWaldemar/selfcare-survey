@@ -14,8 +14,29 @@ spec:
         app: selfcare-survey
     spec:
       containers:
-      - image: schmidtwaldemar/selfcare-survey:latest
+      - image: schmidtwaldemar/selfcare-survey:1.0.0-40
         name: selfcare-survey
         ports:
         - containerPort: 8081
           name: selfcare-survey
+        env:
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                key: POSTGRES_HOST
+                name: postgres-config
+          - name: DB_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                key: POSTGRES_USER
+                name: postgres-config
+          - name: DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: POSTGRES_DB
+                name: postgres-config
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: POSTGRES_PASSWORD
+                name: postgres-secret

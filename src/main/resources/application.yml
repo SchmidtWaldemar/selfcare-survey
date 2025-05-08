@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/survey
-    username: max
-    password: musterPassword
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:survey}
+    username: ${DB_USERNAME:max}
+    password: ${DB_PASSWORD:musterPassword}
   jpa:
     hibernate:
       ddl-auto: update
